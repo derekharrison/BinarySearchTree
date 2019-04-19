@@ -31,7 +31,7 @@ private:
     nd* predecessor(nd* node);
 public:
     Tree();
-    void insert_node(nd node);
+    void insert_node(int key);
     void delete_node(nd* node);
     void delete_node_wrapper(int key);
     nd* search_node(int key);

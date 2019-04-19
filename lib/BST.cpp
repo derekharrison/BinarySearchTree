@@ -15,27 +15,27 @@ Tree::Tree() {
     this->size = 0;
 }
 
-void Tree::insert_node(nd node) {
+void Tree::insert_node(int key) {
     if(this->size == 0) {
         /*Case: Insert root node*/
         nd* node_ptr = new nd;
-        node_ptr->key = node.key;
-        node_ptr->data = node.data;
+        node_ptr->key = key;
+        node_ptr->data = {0};
         this->root = node_ptr;
         this->size++;
     }
     else {
         /*Case: Insert second and greater nodes*/
         nd* node_ptr = new nd;
-        node_ptr->key = node.key;
-        node_ptr->data = node.data;
+        node_ptr->key = key;
+        node_ptr->data = {0};
         nd* node_y = NULL;
         nd* node_x = this->root;
         while(node_x != NULL) {
             /*Case: Node key is unique*/
-            if(node.key != node_x->key) {
+            if(key != node_x->key) {
                 node_y = node_x;
-                if(node.key < node_x->key)
+                if(key < node_x->key)
                     node_x = node_x->left_child;
                 else
                     node_x = node_x->right_child;
