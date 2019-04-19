@@ -43,7 +43,7 @@ void BST::insert_node_fcn(int key) {
             }
             /*Case: Node key is taken*/
             else {
-                throw "node key taken";
+                throw "Node key taken";
             }
         }
         node_ptr->parent = node_y;
@@ -60,7 +60,7 @@ void BST::insert_node(int key) {
         BST::insert_node_fcn(key);
     }
     catch (const char * s) {
-        std::cout << "unable to insert node: "
+        std::cout << "Unable to insert node: "
                   << s << std::endl;
     }
 }
@@ -189,10 +189,10 @@ nd* BST::search_node(int key) {
         else if(key > node_x->key)
             node_x = node_x->right_child;
         else
-            throw "invalid key";
+            throw "Invalid key";
     }
     if(key_found == false)
-        throw "node not found";
+        throw "Node not found";
 
     return node_x;
 }
@@ -321,7 +321,7 @@ void BST::set_data_node(int key, Data data) {
             throw "Node contains data";
     }
     catch (const char * s) {
-        std::cout << "Unable to set data:"
+        std::cout << "Unable to set data: "
                   << s << std::endl;
     }
 }
@@ -334,7 +334,7 @@ void BST::print_data_node(int key) {
                   << "name: "   << data.name   << std::endl;
     }
     catch (const char * s) {
-        std::cout << "Unable to print data:"
+        std::cout << "Unable to print data: "
                   << s << std::endl;
     }
 }
