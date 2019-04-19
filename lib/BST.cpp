@@ -168,9 +168,8 @@ nd* Tree::search_node(int key) {
         else
             throw "invalid key";
     }
-    if(key_found == false) {
+    if(key_found == false)
         throw "node not found";
-    }
     return node_x;
 }
 
