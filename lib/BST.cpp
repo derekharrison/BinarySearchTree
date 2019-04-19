@@ -15,7 +15,7 @@ Tree::Tree() {
     this->size = 0;
 }
 
-void Tree::insert_node(int key) {
+void Tree::insert_node_fcn(int key) {
     if(this->size == 0) {
         /*Case: Insert root node*/
         nd* node_ptr = new nd;
@@ -54,9 +54,9 @@ void Tree::insert_node(int key) {
     }
 }
 
-void Tree::insert_node_wrapper(int key) {
+void Tree::insert_node(int key) {
     try {
-        Tree::insert_node(key);
+        Tree::insert_node_fcn(key);
     }
     catch (const char * s) {
         std::cout << "unable to insert node: "
@@ -64,7 +64,7 @@ void Tree::insert_node_wrapper(int key) {
     }
 }
 
-void Tree::delete_node(nd* node) {
+void Tree::delete_node_fcn(nd* node) {
     /*Case: Root node when size tree is 1*/
     if(node == this->root && this->size == 1) {
         nullify_node (node);
@@ -164,10 +164,10 @@ void Tree::delete_node(nd* node) {
     else {};
 }
 
-void Tree::delete_node_wrapper(int key) {
+void Tree::delete_node(int key) {
     try {
         nd* node_ptr = Tree::search_node(key);
-        Tree::delete_node(node_ptr);
+        Tree::delete_node_fcn(node_ptr);
     }
     catch (const char * s) {
         std::cout << "Unable to delete node: "

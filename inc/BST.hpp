@@ -29,12 +29,12 @@ private:
     nd* tree_maximum();
     nd* successor(nd* node);
     nd* predecessor(nd* node);
+    void insert_node_fcn(int key);
+    void delete_node_fcn(nd* node);
 public:
     Tree();
     void insert_node(int key);
-    void insert_node_wrapper(int key);
-    void delete_node(nd* node);
-    void delete_node_wrapper(int key);
+    void delete_node(int key);
     nd* search_node(int key);
     void print_tree();
     void print_tree_reverse();
