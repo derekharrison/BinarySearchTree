@@ -88,6 +88,5 @@ int main(int argc, char* argv[]) {
 		std::cout << s << std::endl;
 	}
 
-	std::cout << "done bro" << std::endl;
 	return 0;
 }

@@ -78,7 +78,7 @@ void Tree::delete_node(nd* node) {
 		update_children(node_ptr, node);
 		nullify_node(node);
 		this->root = node_ptr;
-	   	delete node;
+       	delete node;
 	    this->size--;
 	}
 	/*Case: Node has no children*/
