@@ -4,7 +4,7 @@
  *  Created on: Apr 15, 2019
  *      Author: d-w-h
  *
- *      Implementation of binary search tree
+ *      Implementation of binary search tree with unique keys
  */
 
 #include <iostream>
@@ -50,8 +50,8 @@ int main(int argc, char* argv[]) {
 
     std::cout << "setting and printing data" << std::endl;
     data.set_data(1.78, "George");
-    bst.set_data_node(33, data);
-    bst.print_data_node(33);
+    bst.set_data_node(10, data);
+    bst.print_data_node(10);
 
     std::cout << "deleting node(s)" << std::endl;
     bst.delete_node(33);
