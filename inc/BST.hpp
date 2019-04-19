@@ -43,6 +43,7 @@ public:
     void print_tree();
     void print_tree_reverse();
     bool verify_bst_invariant();
+    void make_empty();
 };
 
 #endif /* BST_HPP_ */

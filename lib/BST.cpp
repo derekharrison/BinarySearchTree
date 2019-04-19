@@ -108,7 +108,7 @@ void BST::print_tree() {
 
 void BST::print_tree_reverse() {
     nd* node_x = BST::tree_maximum();
-    while(node_x != NULL) {
+    while(node_x != NULL && this->size > 0) {
         std::cout << "key " << node_x->key << std::endl;
         node_x = BST::predecessor(node_x);
     }
@@ -258,9 +258,10 @@ void BST::delete_node_fcn(nd* node) {
         else {
             node_ptr = BST::predecessor(node);
             update_linkage(node_ptr, node);
-        };
-        node_ptr->parent = NULL;
+        }
+        //else {};
         update_children(node_ptr, node);
+        node_ptr->parent = NULL;
         nullify_node(node);
         this->root = node_ptr;
         delete node;
@@ -337,4 +338,10 @@ void BST::delete_node_fcn(nd* node) {
         this->size--;
     }
     else {};
+}
+
+void BST::make_empty() {
+    while(this->root != NULL) {
+        BST::delete_node_fcn(this->root);
+    }
 }

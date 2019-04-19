@@ -55,8 +55,20 @@ int main(int argc, char* argv[]) {
 
     std::cout << "deleting node(s)" << std::endl;
     bst.delete_node(33);
-    bst.delete_node(48);
-    bst.delete_node(23);
+    bst.delete_node(39);
+    bst.delete_node(40);
+    bst.delete_node(47);
+    bst.delete_node(-1);
+    bst.delete_node(49);
+    bst.delete_node(50);
+    bst.delete_node(58);
+    bst.delete_node(64);
+    bst.delete_node(65);
+    bst.delete_node(70);
+    bst.print_tree();
+
+    std::cout << "make empty" << std::endl;
+    bst.make_empty();
     bst.print_tree();
 
     return 0;
