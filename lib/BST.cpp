@@ -64,11 +64,11 @@ void Tree::delete_node(nd* node) {
     else if(node == this->root && this->size > 1) {
         nd* node_ptr = Tree::successor(node);
         if(node_ptr != NULL) {
-            update_linkage(node_ptr);
+            update_linkage(node_ptr, node);
         }
         else {
             node_ptr = Tree::predecessor(node);
-            update_linkage(node_ptr);
+            update_linkage(node_ptr, node);
         };
         node_ptr->parent = NULL;
         update_children(node_ptr, node);
@@ -123,14 +123,14 @@ void Tree::delete_node(nd* node) {
             node != this->root) {
         if(node->key < node->parent->key) {
             nd* node_ptr = Tree::successor(node);
-            update_linkage(node_ptr);
+            update_linkage(node_ptr, node);
             node->parent->left_child = node_ptr;
             node_ptr->parent = node->parent;
             update_children(node_ptr, node);
         }
         else {
             nd* node_ptr = Tree::successor(node);
-            update_linkage(node_ptr);
+            update_linkage(node_ptr, node);
             node->parent->right_child = node_ptr;
             node_ptr->parent = node->parent;
             update_children(node_ptr, node);

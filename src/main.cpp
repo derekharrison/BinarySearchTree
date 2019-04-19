@@ -78,8 +78,6 @@ int main(int argc, char* argv[]) {
     std::cout << "is_bst " << is_bst << std::endl;
 
     std::cout << "deleting node(s)" << std::endl;
-    bst.delete_node_wrapper(-1);
-    bst.delete_node_wrapper(48);
     bst.delete_node_wrapper(33);
     bst.print_tree();
 
