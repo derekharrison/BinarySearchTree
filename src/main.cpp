@@ -79,6 +79,8 @@ int main(int argc, char* argv[]) {
 
     std::cout << "deleting node(s)" << std::endl;
     bst.delete_node_wrapper(33);
+    bst.delete_node_wrapper(48);
+    bst.delete_node_wrapper(23);
     bst.print_tree();
 
     std::cout << "print reverse" << std::endl;

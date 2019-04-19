@@ -63,9 +63,11 @@ void Tree::delete_node(nd* node) {
     /*Case: Root node when size tree is greater than 1*/
     else if(node == this->root && this->size > 1) {
         nd* node_ptr = Tree::successor(node);
+        /*Case: Root node has successor*/
         if(node_ptr != NULL) {
             update_linkage(node_ptr, node);
         }
+        /*Case: Root node has no successor*/
         else {
             node_ptr = Tree::predecessor(node);
             update_linkage(node_ptr, node);
@@ -80,8 +82,10 @@ void Tree::delete_node(nd* node) {
     /*Case: Node has no children*/
     else if(node->left_child == NULL && node->right_child == NULL &&
             node != this->root) {
+        /*Case: Node is left child*/
         if(node->key < node->parent->key)
             node->parent->left_child = NULL;
+        /*Case: Node is right child*/
         else
             node->parent->right_child = NULL;
         nullify_node(node);
@@ -91,10 +95,12 @@ void Tree::delete_node(nd* node) {
     /*Case: Node has right child*/
     else if(node->left_child == NULL && node->right_child != NULL &&
             node != this->root) {
+        /*Case: Node is left child*/
         if(node->key < node->parent->key) {
             node->parent->left_child = node->right_child;
             node->right_child->parent = node->parent;
         }
+        /*Case: Node is right child*/
         else {
             node->parent->right_child = node->right_child;
             node->right_child->parent = node->parent;
@@ -106,10 +112,12 @@ void Tree::delete_node(nd* node) {
     /*Case: Node has left child*/
     else if(node->left_child != NULL && node->right_child == NULL &&
             node != this->root) {
+        /*Case: Node is left child*/
         if(node->key < node->parent->key) {
             node->parent->left_child = node->left_child;
             node->left_child->parent = node->parent;
         }
+        /*Case: Node is right child*/
         else {
             node->parent->right_child = node->left_child;
             node->left_child->parent = node->parent;
@@ -121,6 +129,7 @@ void Tree::delete_node(nd* node) {
     /*Case: Node has left and right child*/
     else if(node->left_child != NULL && node->right_child != NULL &&
             node != this->root) {
+        /*Case: Node is left child*/
         if(node->key < node->parent->key) {
             nd* node_ptr = Tree::successor(node);
             update_linkage(node_ptr, node);
@@ -128,6 +137,7 @@ void Tree::delete_node(nd* node) {
             node_ptr->parent = node->parent;
             update_children(node_ptr, node);
         }
+        /*Case: Node is right child*/
         else {
             nd* node_ptr = Tree::successor(node);
             update_linkage(node_ptr, node);
