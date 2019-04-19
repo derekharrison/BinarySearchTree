@@ -10,45 +10,45 @@
 
 void update_linkage(nd* node_ptr, nd* node) {
     bool is_successor = node_ptr->key > node->key;
-    /*Case: successor is left child and has no right child*/
+    /*Case: Successor is left child and has no right child*/
     if(node_ptr->key < node_ptr->parent->key && node_ptr->right_child == NULL &&
             is_successor == true) {
         node_ptr->parent->left_child = NULL;
     }
-    /*Case: successor is left child and has right child*/
+    /*Case: Successor is left child and has right child*/
     else if(node_ptr->key < node_ptr->parent->key && node_ptr->right_child != NULL &&
             is_successor == true) {
         node_ptr->parent->left_child = node_ptr->right_child;
         node_ptr->right_child->parent = node_ptr->parent;
     }
-    /*Case: successor is right child and has no right child*/
+    /*Case: Successor is right child and has no right child*/
     else if(node_ptr->key > node_ptr->parent->key && node_ptr->right_child == NULL &&
             is_successor == true) {
         node_ptr->parent->right_child = NULL;
     }
-    /*Case: successor is right child and has right child*/
+    /*Case: Successor is right child and has right child*/
     else if(node_ptr->key > node_ptr->parent->key && node_ptr->right_child != NULL &&
             is_successor == true) {
         node_ptr->parent->right_child = node_ptr->right_child;
         node_ptr->right_child->parent = node_ptr->parent;
     }
-    /*Case: predecessor is left child and has no left child*/
+    /*Case: Predecessor is left child and has no left child*/
     else if(node_ptr->key < node_ptr->parent->key && node_ptr->left_child != NULL &&
             is_successor == false) {
         node_ptr->parent->left_child = NULL;
     }
-    /*Case: predecessor is left child and has left child*/
+    /*Case: Predecessor is left child and has left child*/
     else if(node_ptr->key < node_ptr->parent->key && node_ptr->left_child != NULL &&
             is_successor == false) {
         node_ptr->parent->left_child = node_ptr->left_child;
         node_ptr->left_child->parent = node_ptr->parent;
     }
-    /*Case: predecessor is right child and has no left child*/
+    /*Case: Predecessor is right child and has no left child*/
     else if(node_ptr->key > node_ptr->parent->key && node_ptr->left_child == NULL &&
             is_successor == false) {
         node_ptr->parent->right_child = NULL;
     }
-    /*Case: predecessor is right child and has left child*/
+    /*Case: Predecessor is right child and has left child*/
     else if(node_ptr->key > node_ptr->parent->key && node_ptr->left_child != NULL &&
             is_successor == false) {
         node_ptr->parent->right_child = node_ptr->left_child;
