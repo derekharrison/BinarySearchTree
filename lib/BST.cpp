@@ -79,7 +79,7 @@ void Tree::delete_node(nd* node) {
         delete node;
         this->size--;
     }
-    /*Case: Node has no children*/
+    /*Case: Node has no children and is not root node*/
     else if(node->left_child == NULL && node->right_child == NULL &&
             node != this->root) {
         /*Case: Node is left child*/
@@ -92,7 +92,7 @@ void Tree::delete_node(nd* node) {
         delete node;
         this->size--;
     }
-    /*Case: Node has right child*/
+    /*Case: Node has right child and is not root node*/
     else if(node->left_child == NULL && node->right_child != NULL &&
             node != this->root) {
         /*Case: Node is left child*/
@@ -109,7 +109,7 @@ void Tree::delete_node(nd* node) {
         delete node;
         this->size--;
     }
-    /*Case: Node has left child*/
+    /*Case: Node has left child and is not root node*/
     else if(node->left_child != NULL && node->right_child == NULL &&
             node != this->root) {
         /*Case: Node is left child*/
@@ -126,7 +126,7 @@ void Tree::delete_node(nd* node) {
         delete node;
         this->size--;
     }
-    /*Case: Node has left and right child*/
+    /*Case: Node has left and right child and is not root node*/
     else if(node->left_child != NULL && node->right_child != NULL &&
             node != this->root) {
         /*Case: Node is left child*/
