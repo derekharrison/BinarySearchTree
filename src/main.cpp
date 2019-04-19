@@ -51,7 +51,6 @@ int main(int argc, char* argv[]) {
     std::cout << "setting and printing data" << std::endl;
     data.set_data(1.78, "George");
     bst.set_data_node(33, data);
-    bst.set_data_node(33, data);
     bst.print_data_node(33);
 
     std::cout << "deleting node(s)" << std::endl;
