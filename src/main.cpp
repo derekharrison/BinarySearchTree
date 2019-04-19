@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     nd node_15 = {64, 4.72, };
     nd node_16 = {26, 4.72, };
     nd node_17 = {65, 4.72, };
-    nd node_18 = {30, 4.72, };
+    nd node_18 = {31, 4.72, };
     nd node_19 = {49, 4.72, };
     nd node_20 = {50, 4.72, };
     nd node_21 = {10, 4.72, };
@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
     nd node_23 = {8, 4.72, };
     nd node_24 = {9, 4.72, };
     nd node_25 = {-1, 4.72, };
+    nd node_26 = {30, 4.72, };
 
     try {
         bst.insert_node(node_1);
@@ -66,6 +67,7 @@ int main(int argc, char* argv[]) {
         bst.insert_node(node_23);
         bst.insert_node(node_24);
         bst.insert_node(node_25);
+        bst.insert_node(node_26);
         bst.print_tree();
     }
     catch(const char* s) {
@@ -78,6 +80,7 @@ int main(int argc, char* argv[]) {
     std::cout << "deleting node(s)" << std::endl;
     bst.delete_node_wrapper(-1);
     bst.delete_node_wrapper(48);
+    bst.delete_node_wrapper(33);
     bst.print_tree();
 
     std::cout << "print reverse" << std::endl;
