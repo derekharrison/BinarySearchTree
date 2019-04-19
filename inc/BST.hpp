@@ -32,6 +32,7 @@ private:
 public:
     Tree();
     void insert_node(int key);
+    void insert_node_wrapper(int key);
     void delete_node(nd* node);
     void delete_node_wrapper(int key);
     nd* search_node(int key);
