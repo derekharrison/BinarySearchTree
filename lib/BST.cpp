@@ -32,7 +32,7 @@ void Tree::insert_node(nd node) {
         nd* node_y = NULL;
         nd* node_x = this->root;
         while(node_x != NULL) {
-            /*Case: Node key unique*/
+            /*Case: Node key is unique*/
             if(node.key != node_x->key) {
                 node_y = node_x;
                 if(node.key < node_x->key)
@@ -40,7 +40,7 @@ void Tree::insert_node(nd node) {
                 else
                     node_x = node_x->right_child;
             }
-            /*Case: Node key taken*/
+            /*Case: Node key is taken*/
             else {
                 throw "node key taken";
             }
