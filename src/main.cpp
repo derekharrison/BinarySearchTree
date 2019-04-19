@@ -52,8 +52,5 @@ int main(int argc, char* argv[]) {
     bst.delete_node(23);
     bst.print_tree();
 
-    std::cout << "print reverse" << std::endl;
-    bst.print_tree_reverse();
-
     return 0;
 }
