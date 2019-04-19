@@ -170,6 +170,7 @@ nd* Tree::search_node(int key) {
     }
     if(key_found == false)
         throw "node not found";
+
     return node_x;
 }
 
@@ -189,6 +190,7 @@ nd* Tree::subtree_maximum(nd* node) {
             node = node->right_child;
         }
     }
+
     return node;
 }
 
@@ -199,6 +201,7 @@ nd* Tree::tree_minimum() {
             node_x = node_x->left_child;
         }
     }
+
     return node_x;
 }
 
@@ -209,6 +212,7 @@ nd* Tree::tree_maximum() {
             node_x = node_x->right_child;
         }
     }
+
     return node_x;
 }
 
