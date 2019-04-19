@@ -10,12 +10,12 @@
 #include "../inc/BST.hpp"
 #include "../inc/BST_support.hpp"
 
-Tree::Tree() {
+BST::BST() {
     this->root = NULL;
     this->size = 0;
 }
 
-void Tree::insert_node_fcn(int key) {
+void BST::insert_node_fcn(int key) {
     if(this->size == 0) {
         /*Case: Insert root node*/
         nd* node_ptr = new nd;
@@ -54,9 +54,9 @@ void Tree::insert_node_fcn(int key) {
     }
 }
 
-void Tree::insert_node(int key) {
+void BST::insert_node(int key) {
     try {
-        Tree::insert_node_fcn(key);
+        BST::insert_node_fcn(key);
     }
     catch (const char * s) {
         std::cout << "unable to insert node: "
@@ -64,7 +64,7 @@ void Tree::insert_node(int key) {
     }
 }
 
-void Tree::delete_node_fcn(nd* node) {
+void BST::delete_node_fcn(nd* node) {
     /*Case: Root node when size tree is 1*/
     if(node == this->root && this->size == 1) {
         nullify_node (node);
@@ -74,14 +74,14 @@ void Tree::delete_node_fcn(nd* node) {
     }
     /*Case: Root node when size tree is greater than 1*/
     else if(node == this->root && this->size > 1) {
-        nd* node_ptr = Tree::successor(node);
+        nd* node_ptr = BST::successor(node);
         /*Case: Root node has successor*/
         if(node_ptr != NULL) {
             update_linkage(node_ptr, node);
         }
         /*Case: Root node has no successor*/
         else {
-            node_ptr = Tree::predecessor(node);
+            node_ptr = BST::predecessor(node);
             update_linkage(node_ptr, node);
         };
         node_ptr->parent = NULL;
@@ -143,7 +143,7 @@ void Tree::delete_node_fcn(nd* node) {
             node != this->root) {
         /*Case: Node is left child*/
         if(node->key < node->parent->key) {
-            nd* node_ptr = Tree::successor(node);
+            nd* node_ptr = BST::successor(node);
             update_linkage(node_ptr, node);
             node->parent->left_child = node_ptr;
             node_ptr->parent = node->parent;
@@ -151,7 +151,7 @@ void Tree::delete_node_fcn(nd* node) {
         }
         /*Case: Node is right child*/
         else {
-            nd* node_ptr = Tree::successor(node);
+            nd* node_ptr = BST::successor(node);
             update_linkage(node_ptr, node);
             node->parent->right_child = node_ptr;
             node_ptr->parent = node->parent;
@@ -164,10 +164,10 @@ void Tree::delete_node_fcn(nd* node) {
     else {};
 }
 
-void Tree::delete_node(int key) {
+void BST::delete_node(int key) {
     try {
-        nd* node_ptr = Tree::search_node(key);
-        Tree::delete_node_fcn(node_ptr);
+        nd* node_ptr = BST::search_node(key);
+        BST::delete_node_fcn(node_ptr);
     }
     catch (const char * s) {
         std::cout << "Unable to delete node: "
@@ -175,7 +175,7 @@ void Tree::delete_node(int key) {
     }
 }
 
-nd* Tree::search_node(int key) {
+nd* BST::search_node(int key) {
     nd* node_x = this->root;
     bool key_found = false;
     while(node_x != NULL) {
@@ -196,7 +196,7 @@ nd* Tree::search_node(int key) {
     return node_x;
 }
 
-nd* Tree::subtree_minimum(nd* node) {
+nd* BST::subtree_minimum(nd* node) {
     if(node != NULL) {
         while(node->left_child != NULL) {
             node = node->left_child;
@@ -206,7 +206,7 @@ nd* Tree::subtree_minimum(nd* node) {
     return node;
 }
 
-nd* Tree::subtree_maximum(nd* node) {
+nd* BST::subtree_maximum(nd* node) {
     if(node != NULL) {
         while(node->right_child != NULL) {
             node = node->right_child;
@@ -216,7 +216,7 @@ nd* Tree::subtree_maximum(nd* node) {
     return node;
 }
 
-nd* Tree::tree_minimum() {
+nd* BST::tree_minimum() {
     nd* node_x = this->root;
     if(node_x != NULL) {
         while(node_x->left_child != NULL) {
@@ -227,7 +227,7 @@ nd* Tree::tree_minimum() {
     return node_x;
 }
 
-nd* Tree::tree_maximum() {
+nd* BST::tree_maximum() {
     nd* node_x = this->root;
     if(node_x != NULL) {
         while(node_x->right_child != NULL) {
@@ -238,9 +238,9 @@ nd* Tree::tree_maximum() {
     return node_x;
 }
 
-nd* Tree::successor(nd* node) {
+nd* BST::successor(nd* node) {
     if(node->right_child != NULL) {
-        return Tree::subtree_minimum(node->right_child);
+        return BST::subtree_minimum(node->right_child);
     }
     nd* node_y = node->parent;
     while(node_y != NULL && node == node_y->right_child) {
@@ -251,9 +251,9 @@ nd* Tree::successor(nd* node) {
     return node_y;
 }
 
-nd* Tree::predecessor(nd* node) {
+nd* BST::predecessor(nd* node) {
     if(node->left_child != NULL) {
-        return Tree::subtree_maximum(node->left_child);
+        return BST::subtree_maximum(node->left_child);
     }
     nd* node_y = node->parent;
     while(node_y != NULL && node == node_y->left_child) {
@@ -264,8 +264,8 @@ nd* Tree::predecessor(nd* node) {
     return node_y;
 }
 
-void Tree::print_tree() {
-    nd* node_x = Tree::tree_minimum();
+void BST::print_tree() {
+    nd* node_x = BST::tree_minimum();
     while(node_x != NULL) {
         std::cout << "key " << node_x->key <<
                 ",data " << node_x->data;
@@ -275,7 +275,7 @@ void Tree::print_tree() {
             std::cout << ", right_key " << node_x->right_child->key;
         if(node_x->parent != NULL)
             std::cout << ", parent_key " << node_x->parent->key;
-        node_x = Tree::successor(node_x);
+        node_x = BST::successor(node_x);
         if(node_x != NULL)
             std::cout << ", successor " << node_x->key;
         std::cout << std::endl;
@@ -284,18 +284,18 @@ void Tree::print_tree() {
     std::cout << "size tree " << this->size << std::endl;
 }
 
-void Tree::print_tree_reverse() {
-    nd* node_x = Tree::tree_maximum();
+void BST::print_tree_reverse() {
+    nd* node_x = BST::tree_maximum();
     while(node_x != NULL) {
         std::cout << "key " << node_x->key <<
                 ",data " << node_x->data << std::endl;
-        node_x = Tree::predecessor(node_x);
+        node_x = BST::predecessor(node_x);
     }
 }
 
-bool Tree::verify_bst_invariant() {
+bool BST::verify_bst_invariant() {
     bool is_bst = true;
-    nd* node_x = Tree::tree_minimum();
+    nd* node_x = BST::tree_minimum();
     while(node_x != NULL) {
         if(node_x->left_child != NULL &&
                 node_x->left_child->key > node_x->key) {
@@ -305,7 +305,7 @@ bool Tree::verify_bst_invariant() {
                 node_x->right_child->key < node_x->key) {
             is_bst = false;
         }
-        node_x = Tree::successor(node_x);
+        node_x = BST::successor(node_x);
     }
 
     return is_bst;

@@ -18,7 +18,7 @@ typedef struct node {
     node* parent = NULL;
 } nd;
 
-class Tree {
+class BST {
 private:
     nd* root;
     int size;
@@ -32,7 +32,7 @@ private:
     void insert_node_fcn(int key);
     void delete_node_fcn(nd* node);
 public:
-    Tree();
+    BST();
     void insert_node(int key);
     void delete_node(int key);
     nd* search_node(int key);

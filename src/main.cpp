@@ -12,7 +12,7 @@
 #include "../inc/BST.hpp"
 
 int main(int argc, char* argv[]) {
-    Tree bst;
+    BST bst;
     bool is_bst = false;
 
     bst.insert_node(33);
