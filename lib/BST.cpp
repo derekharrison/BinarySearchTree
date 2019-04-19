@@ -34,24 +34,20 @@ void Tree::insert_node(nd node) {
         while(node_x != NULL) {
             if(node.key != node_x->key) {
                 node_y = node_x;
-                if(node.key < node_x->key) {
+                if(node.key < node_x->key)
                     node_x = node_x->left_child;
-                }
-                else {
+                else
                     node_x = node_x->right_child;
-                }
             }
             else {
                 throw "node key taken";
             }
         }
         node_ptr->parent = node_y;
-        if(node_ptr->key < node_y->key) {
+        if(node_ptr->key < node_y->key)
             node_y->left_child = node_ptr;
-        }
-        else {
+        else
             node_y->right_child = node_ptr;
-        }
         this->size++;
     }
 }
@@ -84,12 +80,10 @@ void Tree::delete_node(nd* node) {
     /*Case: Node has no children*/
     else if(node->left_child == NULL && node->right_child == NULL &&
             node != this->root) {
-        if(node->key < node->parent->key) {
+        if(node->key < node->parent->key)
             node->parent->left_child = NULL;
-        }
-        else {
+        else
             node->parent->right_child = NULL;
-        }
         nullify_node(node);
         delete node;
         this->size--;
@@ -149,8 +143,14 @@ void Tree::delete_node(nd* node) {
 }
 
 void Tree::delete_node_wrapper(int key) {
-    nd* node_ptr = Tree::search_node(key);
-    Tree::delete_node(node_ptr);
+    try {
+        nd* node_ptr = Tree::search_node(key);
+        Tree::delete_node(node_ptr);
+    }
+    catch (const char * s) {
+        std::cout << "unable to delete node: "
+                  << s << std::endl;
+    }
 }
 
 nd* Tree::search_node(int key) {
@@ -161,16 +161,12 @@ nd* Tree::search_node(int key) {
             key_found = true;
             return node_x;
         }
-        else if(key < node_x->key) {
-
+        else if(key < node_x->key)
             node_x = node_x->left_child;
-        }
-        else if(key > node_x->key) {
+        else if(key > node_x->key)
             node_x = node_x->right_child;
-        }
-        else {
+        else
             throw "invalid key";
-        }
     }
     if(key_found == false) {
         throw "node not found";
@@ -248,19 +244,15 @@ void Tree::print_tree() {
     while(node_x != NULL) {
         std::cout << "key " << node_x->key <<
                 ",data " << node_x->data;
-        if(node_x->left_child != NULL) {
+        if(node_x->left_child != NULL)
             std::cout << ", left_key " << node_x->left_child->key;
-        }
-        if(node_x->right_child != NULL) {
+        if(node_x->right_child != NULL)
             std::cout << ", right_key " << node_x->right_child->key;
-        }
-        if(node_x->parent != NULL) {
+        if(node_x->parent != NULL)
             std::cout << ", parent_key " << node_x->parent->key;
-        }
         node_x = Tree::successor(node_x);
-        if(node_x != NULL) {
+        if(node_x != NULL)
             std::cout << ", successor " << node_x->key;
-        }
         std::cout << std::endl;
     }
 

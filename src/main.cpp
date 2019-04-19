@@ -72,21 +72,16 @@ int main(int argc, char* argv[]) {
         std::cout << s << std::endl;
     }
 
-    try    {
-        is_bst = bst.verify_bst_invariant();
-        std::cout << "is_bst " << is_bst << std::endl;
+    is_bst = bst.verify_bst_invariant();
+    std::cout << "is_bst " << is_bst << std::endl;
 
-        std::cout << "deleting node(s)" << std::endl;
-        bst.delete_node_wrapper(-1);
-        bst.delete_node_wrapper(48);
-        bst.print_tree();
+    std::cout << "deleting node(s)" << std::endl;
+    bst.delete_node_wrapper(-1);
+    bst.delete_node_wrapper(48);
+    bst.print_tree();
 
-        std::cout << "print reverse" << std::endl;
-        bst.print_tree_reverse();
-    }
-    catch(const char* s) {
-        std::cout << s << std::endl;
-    }
+    std::cout << "print reverse" << std::endl;
+    bst.print_tree_reverse();
 
     return 0;
 }
