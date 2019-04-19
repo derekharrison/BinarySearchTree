@@ -9,13 +9,15 @@
 #define BST_HPP_
 
 #include <cstdlib>
+#include "../inc/Data.hpp"
 
-typedef struct node {
+typedef struct Node {
     int key;
-    double data;
-    node* left_child = NULL;
-    node* right_child = NULL;
-    node* parent = NULL;
+    bool has_data;
+    Data data;
+    Node* left_child = NULL;
+    Node* right_child = NULL;
+    Node* parent = NULL;
 } nd;
 
 class BST {
@@ -36,6 +38,8 @@ public:
     void insert_node(int key);
     void delete_node(int key);
     nd* search_node(int key);
+    void set_data_node(int key, Data data);
+    void print_data_node(int key);
     void print_tree();
     void print_tree_reverse();
     bool verify_bst_invariant();

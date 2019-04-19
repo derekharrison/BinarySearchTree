@@ -13,6 +13,7 @@
 
 int main(int argc, char* argv[]) {
     BST bst;
+    Data data;
     bool is_bst = false;
 
     bst.insert_node(33);
@@ -43,8 +44,14 @@ int main(int argc, char* argv[]) {
     bst.insert_node(30);
     bst.print_tree();
 
+    std::cout << "verifying bst invariant" << std::endl;
     is_bst = bst.verify_bst_invariant();
     std::cout << "is_bst " << is_bst << std::endl;
+
+    std::cout << "setting and printing data" << std::endl;
+    data.set_data(1.78, "George");
+    bst.set_data_node(33, data);
+    bst.print_data_node(33);
 
     std::cout << "deleting node(s)" << std::endl;
     bst.delete_node(33);

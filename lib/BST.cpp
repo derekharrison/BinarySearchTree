@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include "../inc/BST.hpp"
 #include "../inc/BST_support.hpp"
+#include "../inc/Data.hpp"
 
 BST::BST() {
     this->root = NULL;
@@ -20,7 +21,7 @@ void BST::insert_node_fcn(int key) {
         /*Case: Insert root node*/
         nd* node_ptr = new nd;
         node_ptr->key = key;
-        node_ptr->data = {0};
+        node_ptr->has_data = false;
         this->root = node_ptr;
         this->size++;
     }
@@ -28,7 +29,7 @@ void BST::insert_node_fcn(int key) {
         /*Case: Insert second and greater nodes*/
         nd* node_ptr = new nd;
         node_ptr->key = key;
-        node_ptr->data = {0};
+        node_ptr->has_data = false;
         nd* node_y = NULL;
         nd* node_x = this->root;
         while(node_x != NULL) {
@@ -267,8 +268,7 @@ nd* BST::predecessor(nd* node) {
 void BST::print_tree() {
     nd* node_x = BST::tree_minimum();
     while(node_x != NULL) {
-        std::cout << "key " << node_x->key <<
-                ",data " << node_x->data;
+        std::cout << "key " << node_x->key;
         if(node_x->left_child != NULL)
             std::cout << ", left_key " << node_x->left_child->key;
         if(node_x->right_child != NULL)
@@ -287,8 +287,7 @@ void BST::print_tree() {
 void BST::print_tree_reverse() {
     nd* node_x = BST::tree_maximum();
     while(node_x != NULL) {
-        std::cout << "key " << node_x->key <<
-                ",data " << node_x->data << std::endl;
+        std::cout << "key " << node_x->key << std::endl;
         node_x = BST::predecessor(node_x);
     }
 }
@@ -309,4 +308,33 @@ bool BST::verify_bst_invariant() {
     }
 
     return is_bst;
+}
+
+void BST::set_data_node(int key, Data data) {
+    try {
+        nd* node_ptr = BST::search_node(key);
+        if(node_ptr->has_data == false) {
+            node_ptr->data = data;
+            node_ptr->has_data = true;
+        }
+        else
+            throw "Node contains data";
+    }
+    catch (const char * s) {
+        std::cout << "Unable to set data:"
+                  << s << std::endl;
+    }
+}
+
+void BST::print_data_node(int key) {
+    try {
+        nd* node_ptr = BST::search_node(key);
+        Data data = node_ptr->data;
+        std::cout << "height: " << data.height << std::endl
+                  << "name: "   << data.name   << std::endl;
+    }
+    catch (const char * s) {
+        std::cout << "Unable to print data:"
+                  << s << std::endl;
+    }
 }
