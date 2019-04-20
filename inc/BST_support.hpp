@@ -10,7 +10,8 @@
 
 #include "../inc/BST.hpp"
 
-void update_linkage(nd* node_ptr, nd* node);
+void update_links_successor(nd* node_ptr);
+void update_links_predecessor(nd* node_ptr);
 void update_children(nd* node_ptr, nd* node);
 void nullify_node (nd* node);
 

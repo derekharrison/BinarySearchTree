@@ -252,12 +252,12 @@ void BST::delete_node_fcn(nd* node) {
         nd* node_ptr = BST::successor(node);
         /*Case: Root node has successor*/
         if(node_ptr != NULL) {
-            update_linkage(node_ptr, node);
+            update_links_successor(node_ptr);
         }
         /*Case: Root node has no successor*/
         else {
             node_ptr = BST::predecessor(node);
-            update_linkage(node_ptr, node);
+            update_links_predecessor(node_ptr);
         }
         //else {};
         update_children(node_ptr, node);
@@ -320,7 +320,7 @@ void BST::delete_node_fcn(nd* node) {
         /*Case: Node is left child*/
         if(node->key < node->parent->key) {
             nd* node_ptr = BST::successor(node);
-            update_linkage(node_ptr, node);
+            update_links_successor(node_ptr);
             node->parent->left_child = node_ptr;
             node_ptr->parent = node->parent;
             update_children(node_ptr, node);
@@ -328,7 +328,7 @@ void BST::delete_node_fcn(nd* node) {
         /*Case: Node is right child*/
         else {
             nd* node_ptr = BST::successor(node);
-            update_linkage(node_ptr, node);
+            update_links_successor(node_ptr);
             node->parent->right_child = node_ptr;
             node_ptr->parent = node->parent;
             update_children(node_ptr, node);
