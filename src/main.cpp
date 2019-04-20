@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
     bst.insert_node(9);
     bst.insert_node(-1);
     bst.insert_node(30);
-    bst.print_tree();
+    bst.print_tree_reverse();
 
     std::cout << "verifying bst invariant" << std::endl;
     is_bst = bst.verify_bst_invariant();

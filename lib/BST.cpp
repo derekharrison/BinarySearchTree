@@ -108,7 +108,7 @@ void BST::print_tree() {
 
 void BST::print_tree_reverse() {
     nd* node_x = BST::tree_maximum();
-    while(node_x != NULL && this->size > 0) {
+    while(node_x != NULL) {
         std::cout << "key " << node_x->key << std::endl;
         node_x = BST::predecessor(node_x);
     }
