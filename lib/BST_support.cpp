@@ -9,6 +9,7 @@
 #include "../inc/BST.hpp"
 
 void update_links_successor(nd* node_ptr) {
+    /*Note: A successor has at most one (right) child.*/
     /*Case: Successor is left child and has no right child*/
     if(node_ptr->key < node_ptr->parent->key && node_ptr->right_child == NULL) {
         node_ptr->parent->left_child = NULL;
@@ -31,6 +32,7 @@ void update_links_successor(nd* node_ptr) {
 }
 
 void update_links_predecessor(nd* node_ptr) {
+    /*Note: A predecessor has at most one (left) child.*/
     /*Case: Predecessor is left child and has no left child*/
     if(node_ptr->key < node_ptr->parent->key && node_ptr->left_child != NULL) {
         node_ptr->parent->left_child = NULL;
