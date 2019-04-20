@@ -242,8 +242,8 @@ void BST::insert_node_fcn(int key) {
 void BST::delete_node_fcn(nd* node) {
     /*Case: Root node when size tree is 1*/
     if(node == this->root && this->size == 1) {
-        nullify_node (node);
         this->root = NULL;
+        nullify_node (node);
         delete node;
         this->size--;
     }
@@ -259,11 +259,10 @@ void BST::delete_node_fcn(nd* node) {
             node_ptr = BST::predecessor(node);
             update_links_predecessor(node_ptr);
         }
-        //else {};
-        update_children(node_ptr, node);
         node_ptr->parent = NULL;
-        nullify_node(node);
+        update_children(node_ptr, node);
         this->root = node_ptr;
+        nullify_node(node);
         delete node;
         this->size--;
     }
