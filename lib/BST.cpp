@@ -217,18 +217,14 @@ void BST::insert_node_fcn(int key) {
         nd* node_y = NULL;
         nd* node_x = this->root;
         while(node_x != NULL) {
-            /*Case: Node key is unique*/
-            if(key != node_x->key) {
-                node_y = node_x;
-                if(key < node_x->key)
-                    node_x = node_x->left_child;
-                else
-                    node_x = node_x->right_child;
-            }
-            /*Case: Node key is taken*/
-            else {
+            if(key == node_x->key) {
                 throw "Node key taken";
             }
+            node_y = node_x;
+            if(key < node_x->key)
+                node_x = node_x->left_child;
+            else
+                node_x = node_x->right_child;
         }
         node_ptr->parent = node_y;
         if(node_ptr->key < node_y->key)
