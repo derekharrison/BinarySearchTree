@@ -217,9 +217,8 @@ void BST::insert_node_fcn(int key) {
         nd* node_y = NULL;
         nd* node_x = this->root;
         while(node_x != NULL) {
-            if(key == node_x->key) {
+            if(key == node_x->key)
                 throw "Node key taken";
-            }
             node_y = node_x;
             if(key < node_x->key)
                 node_x = node_x->left_child;
