@@ -14,6 +14,7 @@
 int main(int argc, char* argv[]) {
     BST bst;
     Data data;
+    Data data_2;
     bool is_bst = false;
 
     bst.insert_node(33);
@@ -27,6 +28,7 @@ int main(int argc, char* argv[]) {
     bst.insert_node(22);
     bst.insert_node(39);
     bst.insert_node(25);
+    bst.insert_node(30);
     bst.insert_node(29);
     bst.insert_node(70);
     bst.insert_node(47);
@@ -41,8 +43,7 @@ int main(int argc, char* argv[]) {
     bst.insert_node(8);
     bst.insert_node(9);
     bst.insert_node(-1);
-    bst.insert_node(30);
-    bst.print_tree_reverse();
+    bst.print_tree();
 
     std::cout << "verifying bst invariant" << std::endl;
     is_bst = bst.verify_bst_invariant();
@@ -65,7 +66,18 @@ int main(int argc, char* argv[]) {
     bst.delete_node(64);
     bst.delete_node(65);
     bst.delete_node(70);
+    bst.delete_node(48);
+    bst.delete_node(31);
+    bst.delete_node(28);
     bst.print_tree();
+
+    data_2.set_data(1.79, "Derek");
+    bst.set_data_node(23, data_2);
+    bst.print_data_node(23);
+
+    std::cout << "verifying bst invariant" << std::endl;
+    is_bst = bst.verify_bst_invariant();
+    std::cout << "is_bst " << is_bst << std::endl;
 
     std::cout << "make empty" << std::endl;
     bst.make_empty();
